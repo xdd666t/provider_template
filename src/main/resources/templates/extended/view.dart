@@ -4,9 +4,10 @@ import 'package:provider/provider.dart';
 import 'provider.dart';
 import 'state.dart';
 
+// ignore: must_be_immutable
 class $namePage extends StatelessWidget {
-  late final $nameProvider mProvider;
-  late final $nameState mState;
+  late $nameProvider mProvider;
+  late $nameState mState;
 
   @override
   Widget build(BuildContext context) {

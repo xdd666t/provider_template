@@ -50,7 +50,7 @@
 
     <extensions defaultExtensionNs="com.intellij">
         <!-- application level-->
-        <applicationService serviceImplementation="helper.DataService"/>
+        <applicationService serviceImplementation="helper.ProviderData"/>
         <applicationConfigurable parentId="tools" instance="setting.SettingsConfigurable"
                                  id="ProviderSettingsConfigurable" displayName="Flutter Provider Setting"/>
     </extensions>

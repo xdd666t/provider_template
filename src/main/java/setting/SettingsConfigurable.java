@@ -1,7 +1,7 @@
 package setting;
 
 import com.intellij.openapi.options.Configurable;
-import helper.DataService;
+import helper.ProviderData;
 import org.jetbrains.annotations.Nls;
 import org.jetbrains.annotations.Nullable;
 
@@ -9,7 +9,7 @@ import javax.swing.*;
 
 public class SettingsConfigurable implements Configurable {
 
-    private final DataService data = DataService.getInstance();
+    private final ProviderData data = ProviderData.getInstance();
     private SettingsComponent mSetting;
 
     @Nls(capitalization = Nls.Capitalization.Title)

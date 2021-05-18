@@ -10,7 +10,7 @@ import com.intellij.util.xmlb.XmlSerializerUtil;
         name = "ProviderDataService",
         storages = {@Storage(value = "ProviderDataService.xml")
         })
-public class DataService implements PersistentStateComponent<DataService> {
+public class ProviderData implements PersistentStateComponent<ProviderData> {
     // 0:default  1:high   2:extended
     public int defaultMode = ProviderConfig.defaultMode;
 
@@ -34,17 +34,17 @@ public class DataService implements PersistentStateComponent<DataService> {
     //state layer name
     public String stateName = ProviderConfig.stateName;
 
-    public static DataService getInstance() {
-        return ServiceManager.getService(DataService.class);
+    public static ProviderData getInstance() {
+        return ServiceManager.getService(ProviderData.class);
     }
 
     @Override
-    public DataService getState() {
+    public ProviderData getState() {
         return this;
     }
 
     @Override
-    public void loadState(DataService state) {
+    public void loadState(ProviderData state) {
         XmlSerializerUtil.copyBean(state, this);
     }
 }

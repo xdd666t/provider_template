@@ -5,7 +5,7 @@ import com.intellij.openapi.actionSystem.PlatformDataKeys;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.ui.Messages;
 import com.intellij.ui.JBColor;
-import helper.DataService;
+import helper.ProviderData;
 import helper.ProviderConfig;
 
 import javax.swing.*;
@@ -20,7 +20,7 @@ import java.io.*;
 public class NewProvider extends AnAction {
     private Project project;
     private String psiPath;
-    private DataService data;
+    private ProviderData data;
 
     /**
      * Overall popup entity
@@ -45,7 +45,7 @@ public class NewProvider extends AnAction {
     }
 
     private void initData() {
-        data = DataService.getInstance();
+        data = ProviderData.getInstance();
         jDialog = new JDialog(new JFrame(), "Provider Template Code Produce");
     }
 
