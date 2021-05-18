@@ -2,7 +2,7 @@
 
 语言: [English]() | [中文简体]()
 
-## GetX usage
+## provider usage
 
 - Gold digging: 
 
