@@ -11,8 +11,8 @@ import com.intellij.util.xmlb.XmlSerializerUtil;
         storages = {@Storage(value = "ProviderDataService.xml")
         })
 public class DataService implements PersistentStateComponent<DataService> {
-    //default true: use high mode
-    public boolean defaultMode = ProviderConfig.defaultMode;
+    // 0:default  1:high   2:extended
+    public int defaultMode = ProviderConfig.defaultMode;
 
     //default true
     public boolean useFolder = ProviderConfig.useFolder;

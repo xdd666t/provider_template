@@ -2,8 +2,9 @@ package helper;
 
 // set default value
 public class ProviderConfig {
-    //default true: use high mode
-    public static boolean defaultMode = true;
+    // use high mode
+    // 0:default  1:high   2:extended
+    public static int defaultMode = 0;
 
     //default true
     public static boolean useFolder = true;

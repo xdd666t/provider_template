@@ -1,7 +1,7 @@
 <idea-plugin>
     <id>com.tao.provider</id>
     <!-- Plug-in name, the name displayed by the official plugin library -->
-    <name>flutter_provider</name>
+    <name>Flutter Provider</name>
     <!-- version number  -->
     <!--    <version>1.1</version>-->
     <!-- homepage and email (contact address)-->
@@ -42,8 +42,8 @@
     <!-- Write plugin actions -->
     <actions>
         <!-- Add your actions here -->
-        <action id="com.tao.NewProvider" class="NewProvider" text="flutter_provider" description="create flutter_provider template code"
-                icon="/image/icon.jpg">
+        <action id="com.tao.NewProvider" class="NewProvider" text="Flutter Provider" description="Create Flutter Provider template code"
+                icon="/image/icon.png">
             <add-to-group group-id="NewGroup" anchor="first"/>
         </action>
     </actions>
@@ -52,6 +52,6 @@
         <!-- application level-->
         <applicationService serviceImplementation="helper.DataService"/>
         <applicationConfigurable parentId="tools" instance="setting.SettingsConfigurable"
-                                 id="ProviderSettingsConfigurable" displayName="flutter_provider setting"/>
+                                 id="ProviderSettingsConfigurable" displayName="Flutter Provider Setting"/>
     </extensions>
 </idea-plugin>

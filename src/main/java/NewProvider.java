@@ -93,7 +93,7 @@ public class NewProvider extends AnAction {
         jDialog.setModal(true);
         //Set padding
         ((JPanel) jDialog.getContentPane()).setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
-        jDialog.setSize(400, 335);
+        jDialog.setSize(400, 375);
         jDialog.setLocationRelativeTo(null);
         jDialog.setVisible(true);
     }
@@ -104,23 +104,28 @@ public class NewProvider extends AnAction {
     private void setMode(Container container) {
         //Two rows and two columns
         JPanel template = new JPanel();
-        template.setLayout(new GridLayout(1, 2));
+        template.setLayout(new GridLayout(2, 2));
         //Set the main module style：mode, function
         template.setBorder(BorderFactory.createTitledBorder("Select Mode"));
         //default: high setting
-        JRadioButton defaultBtn = new JRadioButton(ProviderConfig.modeDefault, data.defaultMode);
+        JRadioButton defaultBtn = new JRadioButton(ProviderConfig.modeDefault, data.defaultMode == 0);
         defaultBtn.setActionCommand(ProviderConfig.modeDefault);
         setPadding(defaultBtn, 5, 10);
-        JRadioButton highBtn = new JRadioButton(ProviderConfig.modeHigh, !data.defaultMode);
+        JRadioButton highBtn = new JRadioButton(ProviderConfig.modeHigh, data.defaultMode == 1);
         setPadding(highBtn, 5, 10);
         highBtn.setActionCommand(ProviderConfig.modeHigh);
+        JRadioButton extendedBtn = new JRadioButton(ProviderConfig.modeExtended, data.defaultMode == 2);
+        setPadding(extendedBtn, 5, 10);
+        extendedBtn.setActionCommand(ProviderConfig.modeExtended);
 
 
         template.add(defaultBtn);
         template.add(highBtn);
+        template.add(extendedBtn);
         templateGroup = new ButtonGroup();
         templateGroup.add(defaultBtn);
         templateGroup.add(highBtn);
+        templateGroup.add(extendedBtn);
 
         container.add(template);
         setDivision(container);
@@ -191,9 +196,11 @@ public class NewProvider extends AnAction {
         String type = templateGroup.getSelection().getActionCommand();
         //deal default value
         if (ProviderConfig.modeDefault.equals(type)) {
-            data.defaultMode = true;
+            data.defaultMode = 0;
         } else if (ProviderConfig.modeHigh.equals(type)) {
-            data.defaultMode = false;
+            data.defaultMode = 1;
+        } else if (ProviderConfig.modeExtended.equals(type)) {
+            data.defaultMode = 2;
         }
         data.useFolder = folderBox.isSelected();
         data.usePrefix = prefixBox.isSelected();

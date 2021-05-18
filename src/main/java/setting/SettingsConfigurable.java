@@ -15,7 +15,7 @@ public class SettingsConfigurable implements Configurable {
     @Nls(capitalization = Nls.Capitalization.Title)
     @Override
     public String getDisplayName() {
-        return "flutter_provider setting";
+        return "Flutter Provider Setting";
     }
 
     @Nullable
