@@ -17,11 +17,11 @@
 
 ## Description
 
-The description of the plug-in
+The description of the plugin
 
-- Model: generates the GetX mode,
+- Model: generates the provider mode,
 
-    - Default: the Default mode. Three files are generated: view, provider
+    - Default: the Default mode. two files are generated: view, provider
     - High: in simple mode, three files are generated: view, provider, state
     - Extended: a extended usage
 
