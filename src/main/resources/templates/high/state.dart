@@ -1,6 +1,6 @@
 class $nameState {
 
   $nameState() {
-    // init some variable
+    // init some variables
   }
 }

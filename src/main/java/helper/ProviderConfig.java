@@ -3,7 +3,7 @@ package helper;
 // set default value
 public class ProviderConfig {
     // use high mode
-    // 0:default  1:high   2:extended
+    // 0:default  1:high
     public static int defaultMode = 0;
 
     //default true
@@ -29,5 +29,4 @@ public class ProviderConfig {
     //mode name
     public static final String modeDefault = "Default";
     public static final String modeHigh = "High";
-    public static final String modeExtended = "Extended";
 }

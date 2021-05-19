@@ -13,7 +13,7 @@
     <description><![CDATA[
     <h2>Used to generate the template code of provider framework</h2>
     <ul>
-        <li>Right-click the File: New -> flutter_provider </li>
+        <li>Right-click the File: New -> Flutter Provider </li>
         <li>GitHub：<a href="https://github.com/CNAD666/provider_template">provider_template</a></li>
     </ul>
     ]]></description>
@@ -43,14 +43,14 @@
     <actions>
         <!-- Add your actions here -->
         <action id="com.tao.NewProvider" class="NewProvider" text="Flutter Provider" description="Create Flutter Provider template code"
-                icon="/image/icon.png">
+                icon="/image/provider_icon.png">
             <add-to-group group-id="NewGroup" anchor="first"/>
         </action>
     </actions>
 
     <extensions defaultExtensionNs="com.intellij">
         <!-- application level-->
-        <applicationService serviceImplementation="helper.ProviderData"/>
+        <applicationService serviceImplementation="helper.ProviderTaoData"/>
         <applicationConfigurable parentId="tools" instance="setting.SettingsConfigurable"
                                  id="ProviderSettingsConfigurable" displayName="Flutter Provider Setting"/>
     </extensions>

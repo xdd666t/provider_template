@@ -5,8 +5,8 @@ import com.intellij.openapi.actionSystem.PlatformDataKeys;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.ui.Messages;
 import com.intellij.ui.JBColor;
-import helper.ProviderData;
 import helper.ProviderConfig;
+import helper.ProviderTaoData;
 
 import javax.swing.*;
 import java.awt.*;
@@ -20,7 +20,7 @@ import java.io.*;
 public class NewProvider extends AnAction {
     private Project project;
     private String psiPath;
-    private ProviderData data;
+    private ProviderTaoData data;
 
     /**
      * Overall popup entity
@@ -33,7 +33,7 @@ public class NewProvider extends AnAction {
      * Use folder：default true
      * Use prefix：default false
      */
-    private JCheckBox folderBox, prefixBox, nullSafetyBox;
+    private JCheckBox folderBox, prefixBox;
 
     @Override
     public void actionPerformed(AnActionEvent event) {
@@ -45,7 +45,7 @@ public class NewProvider extends AnAction {
     }
 
     private void initData() {
-        data = ProviderData.getInstance();
+        data = ProviderTaoData.getInstance();
         jDialog = new JDialog(new JFrame(), "Provider Template Code Produce");
     }
 
@@ -93,7 +93,7 @@ public class NewProvider extends AnAction {
         jDialog.setModal(true);
         //Set padding
         ((JPanel) jDialog.getContentPane()).setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
-        jDialog.setSize(400, 375);
+        jDialog.setSize(400, 305);
         jDialog.setLocationRelativeTo(null);
         jDialog.setVisible(true);
     }
@@ -104,7 +104,7 @@ public class NewProvider extends AnAction {
     private void setMode(Container container) {
         //Two rows and two columns
         JPanel template = new JPanel();
-        template.setLayout(new GridLayout(2, 2));
+        template.setLayout(new GridLayout(1, 2));
         //Set the main module style：mode, function
         template.setBorder(BorderFactory.createTitledBorder("Select Mode"));
         //default: high setting
@@ -114,18 +114,12 @@ public class NewProvider extends AnAction {
         JRadioButton highBtn = new JRadioButton(ProviderConfig.modeHigh, data.defaultMode == 1);
         setPadding(highBtn, 5, 10);
         highBtn.setActionCommand(ProviderConfig.modeHigh);
-        JRadioButton extendedBtn = new JRadioButton(ProviderConfig.modeExtended, data.defaultMode == 2);
-        setPadding(extendedBtn, 5, 10);
-        extendedBtn.setActionCommand(ProviderConfig.modeExtended);
-
 
         template.add(defaultBtn);
         template.add(highBtn);
-        template.add(extendedBtn);
         templateGroup = new ButtonGroup();
         templateGroup.add(defaultBtn);
         templateGroup.add(highBtn);
-        templateGroup.add(extendedBtn);
 
         container.add(template);
         setDivision(container);
@@ -137,7 +131,7 @@ public class NewProvider extends AnAction {
     private void setCodeFile(Container container) {
         //Select build file
         JPanel file = new JPanel();
-        file.setLayout(new GridLayout(2, 2));
+        file.setLayout(new GridLayout(1, 2));
         file.setBorder(BorderFactory.createTitledBorder("Select Function"));
 
         //use folder
@@ -149,12 +143,6 @@ public class NewProvider extends AnAction {
         prefixBox = new JCheckBox("usePrefix", data.usePrefix);
         setMargin(prefixBox, 5, 10);
         file.add(prefixBox);
-
-        //use null-safety
-        nullSafetyBox = new JCheckBox("null-safety", data.nullSafety);
-        setMargin(nullSafetyBox, 5, 10);
-        file.add(nullSafetyBox);
-
 
         container.add(file);
         setDivision(container);
@@ -199,12 +187,9 @@ public class NewProvider extends AnAction {
             data.defaultMode = 0;
         } else if (ProviderConfig.modeHigh.equals(type)) {
             data.defaultMode = 1;
-        } else if (ProviderConfig.modeExtended.equals(type)) {
-            data.defaultMode = 2;
         }
         data.useFolder = folderBox.isSelected();
         data.usePrefix = prefixBox.isSelected();
-        data.nullSafety = nullSafetyBox.isSelected();
 
 
         String name = nameTextField.getText();
@@ -229,9 +214,6 @@ public class NewProvider extends AnAction {
             case ProviderConfig.modeHigh:
                 generateHigh(folder, prefixName);
                 break;
-            case ProviderConfig.modeExtended:
-                generateExtended(folder, prefixName);
-                break;
         }
     }
 
@@ -246,13 +228,6 @@ public class NewProvider extends AnAction {
         generateFile("high/view.dart", path, prefixName + data.viewFileName.toLowerCase() + ".dart");
         generateFile("high/provider.dart", path, prefixName + data.logicName.toLowerCase() + ".dart");
         generateFile("high/state.dart", path, prefixName + data.stateName.toLowerCase() + ".dart");
-    }
-
-    private void generateExtended(String folder, String prefixName) {
-        String path = psiPath + folder;
-        generateFile("extended/view.dart", path, prefixName + data.viewFileName.toLowerCase() + ".dart");
-        generateFile("extended/provider.dart", path, prefixName + data.logicName.toLowerCase() + ".dart");
-        generateFile("extended/state.dart", path, prefixName + data.stateName.toLowerCase() + ".dart");
     }
 
 
@@ -284,7 +259,7 @@ public class NewProvider extends AnAction {
 
     //content need deal
     private String dealContent(String inputFileName, String outFileName) {
-        //baseFolder
+        //name baseFolder
         String baseFolder = "/templates/";
 
         //read file
@@ -292,23 +267,16 @@ public class NewProvider extends AnAction {
         try {
             InputStream in = this.getClass().getResourceAsStream(baseFolder + inputFileName);
             content = new String(readStream(in));
-        } catch (Exception e) {
-        }
-
+        } catch (Exception e) { }
 
         String prefixName = "";
         //Adding a prefix requires modifying the imported class name
         if (data.usePrefix) {
             prefixName = CaseFormat.LOWER_CAMEL.to(CaseFormat.LOWER_UNDERSCORE, nameTextField.getText()) + "_";
         }
-        // null-safety
-        if (!data.nullSafety) {
-            content = content.replaceAll("late ", "");
-        }
-        content = content.replaceAll("provider.dart", prefixName + data.logicName.toLowerCase() + ".dart");
-        content = content.replaceAll("state.dart", prefixName + data.stateName.toLowerCase() + ".dart");
         //replace logic
         if (outFileName.contains(data.logicName.toLowerCase())) {
+            content = content.replaceAll("state.dart", prefixName + data.stateName.toLowerCase() + ".dart");
             content = content.replaceAll("Provider", data.logicName);
             content = content.replaceAll("State", data.stateName);
             content = content.replaceAll("state", data.stateName.toLowerCase());
@@ -319,11 +287,11 @@ public class NewProvider extends AnAction {
         }
         //replace view
         if (outFileName.contains(data.viewFileName.toLowerCase())) {
-            content = content.replaceAll("Page", data.viewName);
-            content = content.replaceAll("Provider", data.logicName);
-            content = content.replaceAll("provider", data.logicName.toLowerCase());
-            content = content.replaceAll("\\$nameState", "\\$name" + data.stateName);
-            content = content.replaceAll("state", data.stateName.toLowerCase());
+            content = content.replace("\'provider.dart\'", "\'" + prefixName + data.logicName.toLowerCase() + ".dart" + "\'");
+            content = content.replace("Page", data.viewName);
+            content = content.replaceFirst("Provider", data.logicName);
+            content = content.replace("final provider", "final " + data.logicName.toLowerCase());
+            content = content.replace("=> provider", "=> " + data.logicName.toLowerCase());
         }
 
         content = content.replaceAll("\\$name", nameTextField.getText());
