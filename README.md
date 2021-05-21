@@ -13,7 +13,7 @@
    - There are some optional functions, so make it into a multi-button style 
    - you can operate according to your own needs
 
-![getx_template]()
+![provider_template]()
 
 ## Description
 
