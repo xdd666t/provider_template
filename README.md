@@ -1,10 +1,10 @@
 # provider_template
 
-语言: [English]() | [中文简体]()
+语言： [中文简体](https://juejin.cn/post/6968272002515894303)
 
 ## provider usage
 
-- Gold digging: 
+- 掘金：[使用+源码剖析：Flutter Provider的另一面](https://juejin.cn/post/6968272002515894303) 
 
 ## Renderings
 
