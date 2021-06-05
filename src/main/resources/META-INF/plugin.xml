@@ -18,18 +18,6 @@
     </ul>
     ]]></description>
 
-<!--    <h3>Provider Use Article</h3>-->
-<!--    <li>掘金：<a href="https://juejin.cn/post/"> 标题 </a></li>-->
-
-    <!-- Plug-in version change information Support HTML tags-->
-    <!--    <change-notes><![CDATA[-->
-    <!--    <h1>1.1</h1>-->
-    <!--    <ul>-->
-    <!--        <li>You can generate a large number of GetX template codes</li>-->
-    <!--        <li>Improve development efficiency</li>-->
-    <!--        <li>If you have any questions, please give feedback</li>-->
-    <!--    </ul>-->
-    <!--    ]]></change-notes>-->
 
     <!--  It is recommended to write the id of other plug-ins that the plug-in depends on. Do
     not write it. In some cases, uploading the plug-in will report an error -->
@@ -42,8 +30,8 @@
     <!-- Write plugin actions -->
     <actions>
         <!-- Add your actions here -->
-        <action id="com.tao.NewProvider" class="NewProvider" text="Flutter Provider" description="Create Flutter Provider template code"
-                icon="/image/provider_icon.png">
+        <action id="com.tao.NewProvider" class="NewProvider" text="Flutter Provider"
+                description="Create Flutter Provider template code" icon="/image/provider_icon.png">
             <add-to-group group-id="NewGroup" anchor="first"/>
         </action>
     </actions>
@@ -53,5 +41,28 @@
         <applicationService serviceImplementation="helper.ProviderTaoData"/>
         <applicationConfigurable parentId="tools" instance="setting.SettingsConfigurable"
                                  id="ProviderSettingsConfigurable" displayName="Flutter Provider Setting"/>
+    </extensions>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <defaultLiveTemplatesProvider implementation="live_templates.ProviderTemplateProvider"/>
+        <liveTemplateContext implementation="live_templates.ProviderContext"/>
+    </extensions>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <!--Selector Action-->
+        <intentionAction>
+            <className>intention_action.WrapWithSelectorAction</className>
+            <category>Provider</category>
+        </intentionAction>
+        <!--Consumer Action-->
+        <intentionAction>
+            <className>intention_action.WrapWithConsumerAction</className>
+            <category>Provider</category>
+        </intentionAction>
+        <!--ChangeNotifierProvider Action-->
+        <intentionAction>
+            <className>intention_action.WrapWithChangeNotifierProviderAction</className>
+            <category>Provider</category>
+        </intentionAction>
     </extensions>
 </idea-plugin>

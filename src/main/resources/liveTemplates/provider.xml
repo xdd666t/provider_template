@@ -1,0 +1,29 @@
+<templateSet group="provider">
+    <template name="providerconsumer"
+              value="Consumer&lt;$Subject$Provider&gt;(&#10;  builder: (context, provider, child) {&#10;    return $Container$;&#10;  },&#10;)"
+              description="Consumer widget" toReformat="false" toShortenFQNames="true">
+        <variable name="Subject" expression="" defaultValue="&quot;Subject&quot;" alwaysStopAt="true"/>
+        <variable name="Container" expression="" defaultValue="&quot;Container()&quot;" alwaysStopAt="true"/>
+        <context>
+            <option name="FLUTTER" value="true"/>
+        </context>
+    </template>
+    <template name="providerselector"
+              value="Selector&lt;$Subject$Provider, $Subject$Provider&gt;(&#10;  shouldRebuild: (previous, next) {&#10;    return true;&#10;  },&#10;  selector: (context, provider) => provider,&#10;  builder: (context, provider, child) {&#10;    return $Container$;&#10;  },&#10;)"
+              description="Selector widget" toReformat="false" toShortenFQNames="true">
+        <variable name="Subject" expression="" defaultValue="&quot;Subject&quot;" alwaysStopAt="true"/>
+        <variable name="Container" expression="" defaultValue="&quot;Container()&quot;" alwaysStopAt="true"/>
+        <context>
+            <option name="FLUTTER" value="true"/>
+        </context>
+    </template>
+    <template name="providerchangenotifierprovider" value="ChangeNotifierProvider(&#10;  create: (BuildContext context) => $Subject$Provider(),&#10;  child: $Container$,&#10;)"
+              toShortenFQNames="true" description="ChangeNotifierProvider Widget" toReformat="false">
+        <variable name="Subject" expression="" defaultValue="&quot;Subject&quot;" alwaysStopAt="true"/>
+        <variable name="Container" expression="" defaultValue="&quot;Container()&quot;" alwaysStopAt="true"/>
+        <context>
+            <option name="FLUTTER" value="true" />
+        </context>
+    </template>
+
+</templateSet>
