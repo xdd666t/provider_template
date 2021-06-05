@@ -58,6 +58,7 @@ patchPluginXml {
     <h1>1.1.x</h1>
     <ul>
         <li>adjust some info</li>
+        <li>add a article</li>
     </ul>
 
     <h1>1.0.x</h1>

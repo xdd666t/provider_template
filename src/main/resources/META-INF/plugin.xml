@@ -15,6 +15,9 @@
     <ul>
         <li>Right-click the File: New -> Flutter Provider </li>
         <li>GitHub：<a href="https://github.com/CNAD666/provider_template">provider_template</a></li>
+
+        <h3>Provider Use Article</h3>
+        <li>掘金：<a href="https://juejin.cn/post/6968272002515894303">使用+源码剖析：Flutter Provider的另一面</a></li>
     </ul>
     ]]></description>
 
