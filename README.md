@@ -15,6 +15,14 @@
 
 ![provider_plugin](https://cdn.jsdelivr.net/gh/CNAD666/MyData@master/pic/flutter/blog/20210521162031.gif)
 
+- Alt + Enter ： Consumer、Selector、ChangeNotifirProvider
+
+![image-20210605152137006](https://cdn.jsdelivr.net/gh/CNAD666/MyData@master/pic/android/flutter/blog/20210605152140.png)
+
+- enter the **provider**  prefix
+
+![image-20210605152343392](https://cdn.jsdelivr.net/gh/CNAD666/MyData@master/pic/android/flutter/blog/20210605152735.png)
+
 ## Description
 
 The description of the plugin
