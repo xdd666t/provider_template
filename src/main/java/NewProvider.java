@@ -52,7 +52,7 @@ public class NewProvider extends AnAction {
     private void initView() {
         //Set function button
         Container container = jDialog.getContentPane();
-        container.setLayout(new BoxLayout(container, BoxLayout.PAGE_AXIS));
+        container.setLayout(new BoxLayout(container, BoxLayout.Y_AXIS));
 
         //Set the main module style: mode, function
         //deal default value
@@ -62,8 +62,8 @@ public class NewProvider extends AnAction {
         //deal default value
         setCodeFile(container);
 
-        //Generate file name and OK cancel button
-        setNameAndConfirm(container);
+        //Generate module name and OK cancel button
+        setModuleAndConfirm(container);
 
         //Choose a pop-up style
         setJDialog();
@@ -93,7 +93,7 @@ public class NewProvider extends AnAction {
         jDialog.setModal(true);
         //Set padding
         ((JPanel) jDialog.getContentPane()).setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
-        jDialog.setSize(400, 305);
+        jDialog.setSize(430, 350);
         jDialog.setLocationRelativeTo(null);
         jDialog.setVisible(true);
     }
@@ -152,11 +152,11 @@ public class NewProvider extends AnAction {
     /**
      * Generate file name and button
      */
-    private void setNameAndConfirm(Container container) {
+    private void setModuleAndConfirm(Container container) {
         JPanel nameField = new JPanel();
         nameField.setLayout(new FlowLayout());
         nameField.setBorder(BorderFactory.createTitledBorder("Module Name"));
-        nameTextField = new JTextField(30);
+        nameTextField = new JTextField(28);
         nameTextField.addKeyListener(keyListener);
         nameField.add(nameTextField);
         container.add(nameField);

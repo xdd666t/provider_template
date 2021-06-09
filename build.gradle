@@ -14,7 +14,7 @@ group 'com.tao.provider'
 // the corresponding settings in Plugin.xml will be invalid
 // The two settings below are updated frequently, so put them here
 // The version number is modified here
-version '1.3.0'
+version '1.3.1'
 
 // must!!!
 sourceCompatibility = 1.8
@@ -53,6 +53,7 @@ patchPluginXml {
         <li>Major update!!!</li>
         <li>add wrap snippet：Consumer，Selector，ChangeNotifierProvider</li>
         <li>add fast snippet prompt</li>
+        <li>optimized layout</li>
     </ul>
 
     <h1>1.1.x</h1>
