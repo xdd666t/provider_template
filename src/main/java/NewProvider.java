@@ -192,7 +192,7 @@ public class NewProvider extends AnAction {
         data.usePrefix = prefixBox.isSelected();
 
 
-        String name = nameTextField.getText();
+        String name = upperCase(nameTextField.getText());
         String prefix = CaseFormat.LOWER_CAMEL.to(CaseFormat.LOWER_UNDERSCORE, name);
         String folder = "";
         String prefixName = "";
@@ -267,19 +267,20 @@ public class NewProvider extends AnAction {
         try {
             InputStream in = this.getClass().getResourceAsStream(baseFolder + inputFileName);
             content = new String(readStream(in));
-        } catch (Exception e) { }
+        } catch (Exception e) {
+        }
 
         String prefixName = "";
         //Adding a prefix requires modifying the imported class name
         if (data.usePrefix) {
-            prefixName = CaseFormat.LOWER_CAMEL.to(CaseFormat.LOWER_UNDERSCORE, nameTextField.getText()) + "_";
+            prefixName = CaseFormat.LOWER_CAMEL.to(CaseFormat.LOWER_UNDERSCORE, upperCase(nameTextField.getText())) + "_";
         }
         //replace logic
         if (outFileName.contains(data.logicName.toLowerCase())) {
             content = content.replaceAll("state.dart", prefixName + data.stateName.toLowerCase() + ".dart");
             content = content.replaceAll("Provider", data.logicName);
             content = content.replaceAll("State", data.stateName);
-            content = content.replaceAll("state", data.stateName.toLowerCase());
+            content = content.replaceAll("final state", "final " + data.stateName.toLowerCase());
         }
         //replace state
         if (outFileName.contains(data.stateName.toLowerCase())) {
@@ -289,12 +290,12 @@ public class NewProvider extends AnAction {
         if (outFileName.contains(data.viewFileName.toLowerCase())) {
             content = content.replace("\'provider.dart\'", "\'" + prefixName + data.logicName.toLowerCase() + ".dart" + "\'");
             content = content.replace("Page", data.viewName);
-            content = content.replaceFirst("Provider", data.logicName);
+            content = content.replace("nameProvider", "name" + data.logicName);
             content = content.replace("final provider", "final " + data.logicName.toLowerCase());
             content = content.replace("=> provider", "=> " + data.logicName.toLowerCase());
         }
 
-        content = content.replaceAll("\\$name", nameTextField.getText());
+        content = content.replaceAll("\\$name", upperCase(nameTextField.getText()));
 
         return content;
     }
@@ -362,4 +363,9 @@ public class NewProvider extends AnAction {
     private void dispose() {
         jDialog.dispose();
     }
+
+    private String upperCase(String str) {
+        return str.substring(0, 1).toUpperCase() + str.substring(1);
+    }
+
 }

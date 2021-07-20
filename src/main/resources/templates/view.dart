@@ -4,13 +4,18 @@ import 'package:provider/provider.dart';
 import 'provider.dart';
 
 class $namePage extends StatelessWidget {
-  final provider = $nameProvider();
-
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (BuildContext context) => provider,
-      child: Container(),
+      create: (BuildContext context) => $nameProvider(),
+      builder: (context, child) => _buildPage(context),
     );
   }
+
+  Widget _buildPage(BuildContext context) {
+    final provider = context.read<$nameProvider>();
+
+    return Container();
+  }
 }
+

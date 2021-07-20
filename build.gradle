@@ -14,7 +14,7 @@ group 'com.tao.provider'
 // the corresponding settings in Plugin.xml will be invalid
 // The two settings below are updated frequently, so put them here
 // The version number is modified here
-version '1.3.1'
+version '1.5.0'
 
 // must!!!
 sourceCompatibility = 1.8
@@ -48,9 +48,15 @@ intellij {
 // Update instructions are here
 patchPluginXml {
     changeNotes """
+    <h1>1.5.x</h1>
+    <ul>
+        <li>adjust the code template</li>
+        <li>capitalize the first letter of the module name</li>
+    </ul>
+
     <h1>1.3.x</h1>
     <ul>
-        <li>Major update!!!</li>
+        <li>major update!!!</li>
         <li>add wrap snippet：Consumer，Selector，ChangeNotifierProvider</li>
         <li>add fast snippet prompt</li>
         <li>optimized layout</li>
@@ -64,14 +70,14 @@ patchPluginXml {
 
     <h1>1.0.x</h1>
     <ul>
-        <li>You can generate a large number of Provider template codes</li>
-        <li>Improve development efficiency</li>
+        <li>you can generate a large number of Provider template codes</li>
+        <li>improve development efficiency</li>
         <li>compatible with multiple versions of ideas</li>
         <li>support to modify Logic name</li>
         <li>support to modify View,State name</li>
         <li>add plugin logo</li>
         <li>add memory function</li>
-        <li>If you have any questions, please give feedback</li>
+        <li>if you have any questions, please give feedback</li>
     </ul>
     """
 }
