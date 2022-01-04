@@ -17,6 +17,8 @@ public class Snippets {
                 return snippetConsumer(widget);
             case Selector:
                 return snippetSelector(widget);
+            case SelectorShouldRebuild:
+                return snippetSelectorShouldRebuild(widget);
             case ChangeNotifierProvider:
                 return snippetChangeNotifierProvider(widget);
             default:
@@ -33,6 +35,15 @@ public class Snippets {
     }
 
     private static String snippetSelector(String widget) {
+        return String.format("Selector<%1$s, Object>(\n" +
+                "  selector: (context, %2$s) => object,\n" +
+                "  builder: (context, value, child) {\n" +
+                "    return %3$s;\n" +
+                "  },\n" +
+                ")", Provider_SNIPPET_KEY, data.logicName.toLowerCase(), widget);
+    }
+
+    private static String snippetSelectorShouldRebuild(String widget) {
         return String.format("Selector<%1$s, %1$s>(\n" +
                 "  shouldRebuild: (previous, next) {\n" +
                 "    return true;\n" +

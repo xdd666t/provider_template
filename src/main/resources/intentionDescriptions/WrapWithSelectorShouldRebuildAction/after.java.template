@@ -1,0 +1,16 @@
+class Counter extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Selector<SubjectProvider, SubjectProvider>(
+        shouldRebuild: (previous, next) {
+          return true;
+        },
+        selector: (context, provider) => provider,
+        builder: (context, provider, child) {
+          return Text('Counter');
+        },
+      ),
+    );
+  }
+}

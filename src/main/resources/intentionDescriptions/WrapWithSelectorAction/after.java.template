@@ -2,12 +2,9 @@ class Counter extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Selector<SubjectProvider, SubjectProvider>(
-        shouldRebuild: (previous, next) {
-          return true;
-        },
-        selector: (context, provider) => provider,
-        builder: (context, provider, child) {
+      body: Selector<SubjectProvider, Object>(
+        selector: (context, provider) => object,
+        builder: (context, value, child) {
           return Text('Counter');
         },
       ),

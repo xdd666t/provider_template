@@ -9,6 +9,6 @@ public class WrapWithSelectorAction extends WrapWithAction {
 
     @NotNull
     public String getText() {
-        return "Wrap with Selector";
+        return "Wrap with Selector (selector)";
     }
 }

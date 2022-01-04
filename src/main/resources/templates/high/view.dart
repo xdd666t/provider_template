@@ -14,6 +14,7 @@ class $namePage extends StatelessWidget {
 
   Widget _buildPage(BuildContext context) {
     final provider = context.read<$nameProvider>();
+    final state = provider.state;
 
     return Container();
   }
