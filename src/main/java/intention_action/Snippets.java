@@ -49,7 +49,7 @@ public class Snippets {
                 "    return true;\n" +
                 "  },\n" +
                 "  selector: (context, %2$s) => %2$s,\n" +
-                "  builder: (context, %2$s, child) {\n" +
+                "  builder: (context, value, child) {\n" +
                 "    return %3$s;\n" +
                 "  },\n" +
                 ")", Provider_SNIPPET_KEY, data.logicName.toLowerCase(), widget);
